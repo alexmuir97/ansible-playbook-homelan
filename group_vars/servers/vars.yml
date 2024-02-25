@@ -1,0 +1,38 @@
+---
+## Group Management
+user_groups: []
+
+## User Management
+user_users:
+  - name: "ansible"
+    comment: "Ansible"
+    state: "present"
+    sudoers:
+      state: "present"
+      nopassword: true
+    uid: "1000"
+    authorized_keys:
+      - key: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMQMYXCsE9D0IluY9x+jPbR+Ds9kiUxaVBCbBDDmvyGw ansible"
+        exclusive: true
+  - name: "administrator"
+    comment: "Administrator"
+    state: "present"
+    password: "{{ user_administrator_password }}"
+    sudoers:
+      state: "present"
+    uid: "1010"
+    authorized_keys:
+      - key: |
+          sk-ssh-ed25519@openssh.com AAAAGnNrLXNzaC1lZDI1NTE5QG9wZW5zc2guY29tAAAAIBbewM+GLaPHn0CXTlO63a3nprNKYdxBBv0ovbIFQRRiAAAABHNzaDo= yubikey-nano
+          sk-ssh-ed25519@openssh.com AAAAGnNrLXNzaC1lZDI1NTE5QG9wZW5zc2guY29tAAAAIHzcdQJYWexM+n+F6k/0G9RjL5CZzd73FrcFNPrNUjTcAAAABHNzaDo= yubikey-sk
+        exclusive: true
+  - name: "container"
+    comment: "Container"
+    state: "present"
+    password: "{{ user_container_password }}"
+    uid: "1011"
+    authorized_keys:
+      - key: |
+          sk-ssh-ed25519@openssh.com AAAAGnNrLXNzaC1lZDI1NTE5QG9wZW5zc2guY29tAAAAIBbewM+GLaPHn0CXTlO63a3nprNKYdxBBv0ovbIFQRRiAAAABHNzaDo= yubikey-nano
+          sk-ssh-ed25519@openssh.com AAAAGnNrLXNzaC1lZDI1NTE5QG9wZW5zc2guY29tAAAAIHzcdQJYWexM+n+F6k/0G9RjL5CZzd73FrcFNPrNUjTcAAAABHNzaDo= yubikey-sk
+        exclusive: true
