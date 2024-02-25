@@ -1,0 +1,7 @@
+---
+collections:
+  - name: https://github.com/alexmuir97/ansible-collection-local.system.git
+    type: git
+    version: main
+  - name: https://github.com/alexmuir97/ansible-collection-local.container.git
+    type: git
